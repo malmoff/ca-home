@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Tvinga HTTPS och ta bort www-prefixet
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC,OR]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://cmonagency.com/$1 [R=301,L]
+
+# Ta bort filändelser (.html)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
