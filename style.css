@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 
 :root {
   --primary-color: #f60f20;
   --secondary-color: #1b206e;
-  --text-color: #111;
-  --background-color: #f9f9f9;
 }
 
 /* BASE STYLES */
@@ -17,7 +15,7 @@
 html,
 body {
   font-family: 'Poppins', sans-serif;
-  color: var(--text-color);
+  color: #111;
 }
 
 h1 {
@@ -54,15 +52,14 @@ section.home {
   padding: 10px 30px;
   margin: 20px 0;
   border: 0;
-  transition: transform 0.2s ease-in-out;
+  z-index: 10; /* Ensure buttons appear above other elements */
+  position: relative;
 }
 
-.btn:hover,
-.btn:focus {
+.btn:hover {
   transform: scale(0.98);
 }
 
-/* LOGO */
 .logo {
   position: absolute;
   top: 30px;
@@ -79,13 +76,12 @@ section.home {
   right: 0;
   width: 60px;
   height: 60px;
-  background: var(--primary-color) url(../images/menu.png) center / 30px no-repeat;
+  background: var(--primary-color) url(../images/menu.png);
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
   z-index: 20;
   cursor: pointer;
-}
-
-.toggle.active {
-  background-size: 25px;
 }
 
 /* NAVIGATION */
@@ -100,52 +96,17 @@ section.home {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: left 0.3s ease;
 }
 
 .navigation.active {
   left: 0;
 }
 
-.navigation ul {
-  position: relative;
-}
-
-.navigation ul li {
-  list-style: none;
-  text-align: center;
-}
-
-.navigation ul li a {
-  font-size: 2.2rem;
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 300;
-}
-
 .navigation ul li a:hover {
   color: var(--primary-color);
 }
 
-.navigation .social-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .navigation .social-bar a {
-  display: inline-block;
-  transform: scale(0.5);
-}
-
-.navigation .email-icon {
-  position: absolute;
-  bottom: 20px;
   transform: scale(0.5);
 }
 
@@ -161,160 +122,24 @@ section.home {
   bottom: 0;
   right: 0;
   height: 85%;
+  z-index: 1; /* Ensures image is behind other elements */
+  object-fit: cover; /* Ensures the entire image is shown without distortion */
 }
 
-/* SERVICES PAGE */
-.services {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  text-align: center;
-}
-
-.services .service {
-  padding: 30px;
-}
-
-.services .service:hover {
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.services .service h2 {
-  font-size: 24px;
-  font-weight: 500;
-  margin-top: 20px;
-  color: var(--secondary-color);
-}
-
-.services .service .icon img {
-  max-width: 100px;
-}
-
-/* WORK PAGE */
-.portfolio {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.portfolio .item {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 5px;
-}
-
-.portfolio .item img {
-  width: 100%;
-  height: 100%;
-}
-
-.portfolio .item .action {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.portfolio .item:hover .action {
-  opacity: 1;
-}
-
-.portfolio .item .action a {
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  border: 1px solid #fff;
-  padding: 5px 15px;
-}
-
-/* CONTACT */
-.contact {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  width: 100%;
-  margin-top: 50px;
-  align-items: flex-start;
-}
-
-.contact-form {
-  background: var(--background-color);
-  padding: 60px 40px 20px;
-}
-
-.contact-form form {
-  width: 100%;
-}
-
-.contact-form .row {
-  display: flex;
-}
-
-.contact-form .input50 {
-  width: 50%;
-  margin: 0 10px;
-}
-
-.contact-form .input100 {
-  width: 100%;
-  margin: 0 10px;
-}
-
-.contact-form input[type="submit"] {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 15px;
-  padding: 10px 20px;
-  margin-top: 10px;
-}
-
-.contact-form .row input,
-.contact-form .row textarea {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background: transparent;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  font-weight: 300;
-  margin: 10px 0;
-  resize: none;
-}
-
-.contact-info {
-  background: var(--background-color);
-  padding: 60px 40px 20px;
-}
-
-/* FOOTER */
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #fff;
-  color: var(--text-color);
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-footer .banner-slot img {
+/* BANNER */
+.banner-slot img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
+  height: auto; /* Ensures banner images scale proportionally */
+  z-index: 5; /* Keeps banners below buttons but above other elements */
 }
 
-/* MEDIA QUERIES */
+.banner-slot a {
+  width: 100%;
+}
+
+/* RESPONSIVE STYLES */
 @media (max-width: 1068px) {
   .home-img {
     display: none;
@@ -330,20 +155,26 @@ footer .banner-slot img {
     padding: 100px 40px;
   }
 
+  .navigation ul li a {
+    font-size: 2rem;
+  }
+
   .services {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .contact {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
-}
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 20px;
+  .contact-form {
+    width: 100%;
+    padding: 30px 30px 20px;
   }
-  .services {
-    grid-template-columns: 1fr;
+
+  .contact-info {
+    width: 100%;
+    margin-top: 20px;
+    padding: 30px 30px 20px;
   }
 }
