@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
 :root {
   --primary-color: #f60f20;
   --secondary-color: #1b206e;
+  --text-color: #111;
+  --background-color: #f9f9f9;
 }
 
 /* BASE STYLES */
@@ -15,7 +17,7 @@
 html,
 body {
   font-family: 'Poppins', sans-serif;
-  color: #111;
+  color: var(--text-color);
 }
 
 h1 {
@@ -52,12 +54,15 @@ section.home {
   padding: 10px 30px;
   margin: 20px 0;
   border: 0;
+  transition: transform 0.2s ease-in-out;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:focus {
   transform: scale(0.98);
 }
 
+/* LOGO */
 .logo {
   position: absolute;
   top: 30px;
@@ -74,19 +79,13 @@ section.home {
   right: 0;
   width: 60px;
   height: 60px;
-  background: var(--primary-color) url(../images/menu.png);
-  background-size: 30px;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: var(--primary-color) url(../images/menu.png) center / 30px no-repeat;
   z-index: 20;
   cursor: pointer;
 }
 
 .toggle.active {
-  background: var(--primary-color) url
   background-size: 25px;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* NAVIGATION */
@@ -101,6 +100,7 @@ section.home {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: left 0.3s ease;
 }
 
 .navigation.active {
@@ -112,14 +112,13 @@ section.home {
 }
 
 .navigation ul li {
-  position: relative;
   list-style: none;
   text-align: center;
 }
 
 .navigation ul li a {
   font-size: 2.2rem;
-  color: #111;
+  color: var(--text-color);
   text-decoration: none;
   font-weight: 300;
 }
@@ -223,7 +222,7 @@ section.home {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: 0.5s;
+  transition: opacity 0.3s ease;
 }
 
 .portfolio .item:hover .action {
@@ -240,18 +239,16 @@ section.home {
 
 /* CONTACT */
 .contact {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
   width: 100%;
   margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
   align-items: flex-start;
 }
 
 .contact-form {
-  position: relative;
-  background: #f9f9f9;
-  width: calc(100% - 400px);
+  background: var(--background-color);
   padding: 60px 40px 20px;
 }
 
@@ -260,7 +257,6 @@ section.home {
 }
 
 .contact-form .row {
-  width: 100%;
   display: flex;
 }
 
@@ -275,85 +271,41 @@ section.home {
 }
 
 .contact-form input[type="submit"] {
-    background-color: #4CAF50; /* Green background */
-    border: none; /* Remove border */
-    color: white; /* White text */
-    cursor: pointer; /* Add a pointer cursor on hover */
-    font-size: 15px; /* Increase font size */
-    padding: 10px 20px; /* Increase padding */
-    margin-top: 10px; /* Add some top margin for spacing */
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin-top: 10px;
 }
 
 .contact-form .row input,
 .contact-form .row textarea {
-  position: relative;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #111;
   background: transparent;
   width: 100%;
   padding: 10px;
-  outline: none;
   font-size: 16px;
   font-weight: 300;
   margin: 10px 0;
   resize: none;
 }
 
-.contact-form .row textarea {
-  height: 150px;
-}
-
-.contact-form .row input[type='submit'] {
-  background-color: var(--secondary-color);
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 300;
-  border: 0;
-  cursor: pointer;
-}
-
 .contact-info {
-  width: 350px;
-  background: #f9f9f9;
+  background: var(--background-color);
   padding: 60px 40px 20px;
 }
 
-.contact-info .info-box {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 40px;
-}
-
-.contact-info .info-box .contact-icon {
-  width: 20px;
-  margin-right: 40px;
-}
-
-.contact-info .info-box .details h4 {
-  color: var(--secondary-color);
-}
-
-.contact-info .info-box .details p,
-.contact-info .info-box .details a {
-  color: #111;
-}
-
-//FOOTER
+/* FOOTER */
 footer {
- position: absolute;
+  position: absolute;
   bottom: 0;
-  max-width: 100%;
+  width: 100%;
   background-color: #fff;
-  color: #111;
+  color: var(--text-color);
   font-size: 1.1rem;
-}
-
-footer .banner-slot {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 footer .banner-slot img {
@@ -362,11 +314,7 @@ footer .banner-slot img {
   max-width: 100%;
 }
 
-.banner-slot a {
-  width: 100%;
-}
-
-
+/* MEDIA QUERIES */
 @media (max-width: 1068px) {
   .home-img {
     display: none;
@@ -382,96 +330,20 @@ footer .banner-slot img {
     padding: 100px 40px;
   }
 
-  .navigation ul li a {
-    font-size: 2rem;
-  }
-
   .services {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .contact {
-    flex-direction: column;
-  }
-
-  .contact-form {
-    width: 100%;
-    padding: 30px 30px 20px;
-  }
-
-  .contact-form .row {
-    flex-direction: column;
-  }
-
-  .contact-form .input50,
-  .contact-form .input100 {
-    width: 100%;
-    margin: 0;
-  }
-
-  .contact-info {
-    width: 100%;
-    margin-top: 20px;
-    padding: 30px 30px 20px;
-  }
-  
-    .banner-slot img {
-    height: 100px;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 768px) {
+  h1 {
+    font-size: 20px;
+  }
   .services {
     grid-template-columns: 1fr;
-  }
-
-  .services .service {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  }
-   h1 {
-    font-size: 20px;
-   }
-   
-     .banner-slot img {
-    height: 95px;
-  }
-}
-
-
-
-@media only screen and (min-width: 600px) {
-  .contact-form {
-    margin: 0 auto;
-    max-width: 600px;
-  }
-  .contact-info {
-    margin: 0 auto;
-    max-width: 600px;
-}}
-
-
-
-@media only screen and (max-width: 800px) {
-  .contact-form input,
-  .contact-form textarea {
-    width: 100%;
-    margin-bottom: 8px;
-  }
-  
-  .contact-info .info-box {
-    width: 100%;
-    margin-bottom: 16px;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .contact-form label {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  
-    .contact-info .info-box {
-    font-size: 14px;
-    line-height: 1.5;
   }
 }
